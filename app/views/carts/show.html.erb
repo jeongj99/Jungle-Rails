@@ -5,7 +5,7 @@
   </header>
 
   <div class="panel panel-default items">
-    <% if enhanced_cart.length == 0 %>
+    <% if !enhanced_cart.any? %>
       <p class="alert alert-danger">Your cart is empty</p>
     <% else %>
       <table class="table table-bordered">
@@ -37,7 +37,7 @@
   </div>
 
   <div class="row">
-    <% if enhanced_cart.length == 0 %>
+    <% if !enhanced_cart.any? %>
       <%= link_to "Home", root_path %>
     <% else %>
       <div class="col-xs-12">
