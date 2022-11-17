@@ -1,9 +1,5 @@
 module ProductHelper
   def stock_empty?
-    if self[:quantity] == 0
-      true
-    else
-      false
-    end
+    self[:quantity] == 0
   end
 end
