@@ -4,13 +4,13 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(product_params)
+    @user = User.new(user_params)
 
     if @user.save
       session[:user_id] = @user.id
       redirect_to root_path
     else
-      redirect_to users_new_path
+      redirect_to '/users/new'
     end
   end
 
@@ -25,5 +25,5 @@ class UsersController < ApplicationController
       :passoword_confirmation
     )
   end
-  
+
 end
