@@ -73,5 +73,11 @@ RSpec.describe User, type: :model do
       @login_user = User.authenticate_with_credentials('asdf@gmail.com', 'password')
       expect(@login_user).to eq(@user)
     end
+
+    it "should return an instance of the user if successfully authenticated even if email has trailing spaces" do
+      @user.save!
+      @login_user = User.authenticate_with_credentials('  asdf@gmail.com ', 'password')
+      expect(@login_user).to eq(@user)
+    end
   end
 end
