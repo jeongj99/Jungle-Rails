@@ -48,5 +48,12 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
+
+    it "should have a password length validation error within the .errors.full_messages array when password doesn't meet minimum length requirement of 8" do
+      @user.password = "pw"
+      @user.password_confirmation = "pw"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password is too short (minimum is 8 characters)")
+    end
   end
 end
