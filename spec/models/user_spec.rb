@@ -42,5 +42,11 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation can't be blank")
     end
+
+    it "should have a password confirmation validation error within the .errors.full_messages array when password doesn't match password_confirmation" do
+      @user.password_confirmation = "pasword"
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+    end
   end
 end
