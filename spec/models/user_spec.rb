@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  before :each do
-    @user = User.new(first_name: "Alex", last_name: "Jeong", email: "asdf@gmail.com", password: "password", password_confirmation: "password")
-  end
-
   describe "Validations" do
+    before :each do
+      @user = User.new(first_name: "Alex", last_name: "Jeong", email: "asdf@gmail.com", password: "password", password_confirmation: "password")
+    end
+
     it "should have a first_name validation error within the .errors.full_messages array when first_name is set to nil" do
       @user.first_name = nil
       @user.valid?
@@ -58,7 +58,20 @@ RSpec.describe User, type: :model do
   end
 
   describe ".authenticate_with_credentials" do
+    before :each do
+      @user = User.new(first_name: "Alex", last_name: "Jeong", email: "asdf@gmail.com", password: "password", password_confirmation: "password")
+    end
+
     it "should return nil if authentication fails" do
+      @user.save!
+      @login_user = User.authenticate_with_credentials('asdf@gmail.com', 'pw')
+      expect(@login_user).to be(nil)
+    end
+
+    it "should return an instance of the user if successfully authenticated" do
+      @user.save!
+      @login_user = User.authenticate_with_credentials('asdf@gmail.com', 'password')
+      expect(@login_user).to eq(@user)
     end
   end
 end
