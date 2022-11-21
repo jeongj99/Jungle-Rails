@@ -18,7 +18,7 @@ RSpec.describe Product, type: :model do
       expect(@product.id).to be_present
     end
 
-    it "should have a name validation error within the .errors.full_messages array" do
+    it "should have a name validation error within the .errors.full_messages array when name is set to nil" do
       params = {
         name: nil,
         price: 1200,
@@ -26,8 +26,20 @@ RSpec.describe Product, type: :model do
         category: @category
       }
       @product = Product.new(params)
-      @product.save
+      @product.valid?
       expect(@product.errors.full_messages).to include("Name can't be blank")
+    end
+
+    it "should have a category validation error within the .errors.full_messages array when category is set to nil" do
+      params = {
+        name: 'Cactus',
+        price: 1200,
+        quantity: 14,
+        category: nil
+      }
+      @product = Product.new(params)
+      @product.valid?
+      expect(@product.errors.full_messages).to include("Category can't be blank")
     end
   end
 end
