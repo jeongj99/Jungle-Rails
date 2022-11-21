@@ -9,7 +9,7 @@ RSpec.describe Product, type: :model do
     it "saves successfully if a product has all four fields set" do
       params = {
         name: 'Cactus',
-        price: 1200,
+        price_cents: 1200,
         quantity: 14,
         category: @category
       }
@@ -21,7 +21,7 @@ RSpec.describe Product, type: :model do
     it "should have a name validation error within the .errors.full_messages array when name is set to nil" do
       params = {
         name: nil,
-        price: 1200,
+        price_cents: 1200,
         quantity: 14,
         category: @category
       }
@@ -30,10 +30,22 @@ RSpec.describe Product, type: :model do
       expect(@product.errors.full_messages).to include("Name can't be blank")
     end
 
+    it "should have a price validation error within the .errors.full_messages array when price is set to nil" do
+      params = {
+        name: 'Cactus',
+        price_cents: nil,
+        quantity: 14,
+        category: @category
+      }
+      @product = Product.new(params)
+      @product.valid?
+      expect(@product.errors.full_messages).to include("Price cents can't be blank")
+    end
+
     it "should have a quantity validation error within the .errors.full_messages array when quantity is set to nil" do
       params = {
         name: 'Cactus',
-        price: 1200,
+        price_cents: 1200,
         quantity: nil,
         category: @category
       }
@@ -45,7 +57,7 @@ RSpec.describe Product, type: :model do
     it "should have a category validation error within the .errors.full_messages array when category is set to nil" do
       params = {
         name: 'Cactus',
-        price: 1200,
+        price_cents: 1200,
         quantity: 14,
         category: nil
       }
