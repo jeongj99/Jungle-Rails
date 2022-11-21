@@ -55,6 +55,13 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("Password is too short (minimum is 8 characters)")
     end
+
+    it "should save user if all validations pass" do
+      @user2 = User.new(first_name: "Obiwan", last_name: "Kenobi", email: "hello@gmail.com", password: "password", password_confirmation: "password")
+      @user2.save!
+      @user.save!
+      expect(@user.id).to be_present
+    end
   end
 
   describe ".authenticate_with_credentials" do
