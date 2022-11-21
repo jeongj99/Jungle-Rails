@@ -79,5 +79,11 @@ RSpec.describe User, type: :model do
       @login_user = User.authenticate_with_credentials('  asdf@gmail.com ', 'password')
       expect(@login_user).to eq(@user)
     end
+
+    it "should return an instance of the user if successfully authenticated even if the email is typed in the wrong case" do
+      @user.save!
+      @login_user = User.authenticate_with_credentials('  ASdF@gMail.com ', 'password')
+      expect(@login_user).to eq(@user)
+    end
   end
 end
