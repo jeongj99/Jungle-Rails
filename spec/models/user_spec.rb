@@ -59,7 +59,7 @@ RSpec.describe User, type: :model do
 
   describe ".authenticate_with_credentials" do
     before :each do
-      @user = User.new(first_name: "Alex", last_name: "Jeong", email: "asdf@gmail.com", password: "password", password_confirmation: "password")
+      @user = User.new(first_name: "Alex", last_name: "Jeong", email: "Asdf@gmail.Com", password: "password", password_confirmation: "password")
     end
 
     it "should return nil if authentication fails" do
