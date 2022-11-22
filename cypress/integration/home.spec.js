@@ -1,9 +1,13 @@
 describe("visit home page of our Jungle App", () => {
   beforeEach(() => {
-    cy.visit('/')
+    cy.visit('/');
   });
 
   it("There is products on the page", () => {
     cy.get(".products article").should("be.visible");
   });
-})
+
+  it("There are 2 products on the page", () => {
+    cy.get(".products article").should("have.length", 2);
+  });
+});
