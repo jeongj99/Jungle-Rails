@@ -3,6 +3,9 @@
 A mini e-commerce application built with Rails 6.1. In this application, one can register/login to their account. Once in their account, they can add plants to their cart and then checkout using their (fake) credit card.
 
 ## GIF
+!["Registering"](https://github.com/jeongj99/Jungle-Rails/blob/main/docs/register.gif?raw=true)
+!["Adding products to cart"](https://github.com/jeongj99/Jungle-Rails/blob/main/docs/add_to_cart.gif?raw=true)
+!["Checking out"](https://github.com/jeongj99/Jungle-Rails/blob/main/docs/checkout.gif?raw=true)
 
 ## Setup
 
