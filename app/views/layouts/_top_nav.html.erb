@@ -73,8 +73,8 @@
           </li>
           <li><%= link_to 'Logout', '/logout', class: "nav-link end-0" %></li>
         <% else %>
-          <li data-test-id="register-link" class="nav-item">
-            <%= link_to 'Login', new_session_path, class: "nav-link" %>
+          <li class="nav-item" data-test-id="login-link">
+            <%= link_to 'Login', new_session_path, class: "nav-link"%>
           </li>
           <li data-test-id="register-link" class="nav-item end-0">
             <%= link_to 'Register', new_user_path, class: "nav-link" %>

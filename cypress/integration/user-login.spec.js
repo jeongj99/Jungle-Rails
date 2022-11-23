@@ -16,8 +16,6 @@ describe("Sign up and log in", () => {
 
     cy.get("#user_password_confirmation").type("password");
 
-    // cy.contains(".btn", "Register").click();
-
     cy.get("form").submit();
 
     cy.contains("li", "Signed in as Obiwan Kenobi");
@@ -27,5 +25,15 @@ describe("Sign up and log in", () => {
 
   it("Should be able to log in and once logged in, it should take them to the home page with the nav bar displaying logout", () => {
     cy.get("[data-test-id=login-link]").click();
+
+    cy.get("#email").type("alexj@gmail.com");
+    
+    cy.get("#password").type("password");
+
+    cy.get("form").submit();
+
+    cy.contains("li", "Signed in as Alex Jeong");
+
+    cy.contains("li", "Logout");
   })
 });
